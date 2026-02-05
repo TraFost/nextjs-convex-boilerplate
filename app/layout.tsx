@@ -18,8 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	title: "Next.js + Convex Starter",
-	description:
-		"A fintech tooling starter template with Next.js App Router and Convex backend.",
+	description: "A starter template with Next.js App Router and Convex backend.",
 };
 
 export default function RootLayout({

@@ -52,8 +52,7 @@ export default function Home() {
 						</h1>
 						<p className="max-w-2xl text-base text-muted-foreground md:text-lg">
 							This template bundles a Next.js App Router frontend with a typed
-							Convex backend, AI-ready helpers, and a polished UI design
-							system—all prewired to build risk and case workflows.
+							Convex backend, AI-ready helpers, and a polished UI design.
 						</p>
 						<div className="flex flex-wrap gap-3">
 							<Button>Explore features</Button>
