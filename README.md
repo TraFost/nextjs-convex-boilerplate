@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CasePilot Next.js + Convex Boilerplate
 
-## Getting Started
+Opinionated starter with Next.js App Router, Convex, and an AI-ready stack.
 
-First, run the development server:
+## Features
+
+- Next.js App Router UI under app/
+- Convex schema + functions under convex/
+- Typed client APIs via generated Convex bindings
+- Zod-validated public env variables
+- OpenRouter AI SDK helpers (analysis + embeddings)
+- Component variants with class-variance-authority + Tailwind merge
+- Toasts wired with Sonner + lucide icons
+
+## Tech stack
+
+- Next.js 16, React 19
+- Convex 1.x
+- Tailwind CSS v4 + tw-animate-css
+- Zod, AI SDK, OpenRouter
+
+## Quick start
+
+1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Set environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a .env.local file and include the public keys validated in
+[app/configs/env.config.ts](app/configs/env.config.ts):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_CONVEX_URL=
+NEXT_PUBLIC_CONVEX_SITE_URL=
+NEXT_PUBLIC_OPENROUTER_API_KEY=
+NEXT_PUBLIC_OPENROUTER_EMBEDDING_MODEL=
+NEXT_PUBLIC_OPENROUTER_ANALYZE_MODEL=
+```
 
-## Learn More
+3. Run the app
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- app/ — App Router pages, UI components, hooks, providers
+- convex/ — schema + query/mutation functions
+- public/ — static assets
+
+Key references:
+
+- [app/layout.tsx](app/layout.tsx) wires the Convex provider + toaster
+- [app/hooks/tasks.hook.ts](app/hooks/tasks.hook.ts) shows the hook → api pattern
+- [convex/schema.ts](convex/schema.ts) defines the data model
+- [app/components/ui/button.tsx](app/components/ui/button.tsx) shows CVA usage
+
+## Convex workflow
+
+Convex functions live in convex/. See [convex/README.md](convex/README.md)
+for CLI usage and function patterns.
+
+## Deployment
+
+Use your preferred platform (Vercel recommended for Next.js). Ensure the
+same public env vars from [app/configs/env.config.ts](app/configs/env.config.ts)
+are configured in the deployment environment.
