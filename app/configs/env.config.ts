@@ -6,6 +6,7 @@ const envSchema = z.object({
 	NEXT_PUBLIC_OPENROUTER_API_KEY: z.string().min(1),
 	NEXT_PUBLIC_OPENROUTER_EMBEDDING_MODEL: z.string().min(1),
 	NEXT_PUBLIC_OPENROUTER_MAIN_MODEL: z.string().min(1),
+	NEXT_PUBLIC_OPENROUTER_BACKUP_MODEL: z.string().min(1),
 });
 
 const parsedEnv = envSchema.safeParse({
@@ -16,6 +17,8 @@ const parsedEnv = envSchema.safeParse({
 		process.env.NEXT_PUBLIC_OPENROUTER_EMBEDDING_MODEL,
 	NEXT_PUBLIC_OPENROUTER_MAIN_MODEL:
 		process.env.NEXT_PUBLIC_OPENROUTER_MAIN_MODEL,
+	NEXT_PUBLIC_OPENROUTER_BACKUP_MODEL:
+		process.env.NEXT_PUBLIC_OPENROUTER_BACKUP_MODEL,
 });
 
 if (!parsedEnv.success) {
